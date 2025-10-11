@@ -1,2 +1,12 @@
 # E-Commerce-Dataset
-Data Cleaning and analysis project for a E-Commerce dataset (287M records) using Pyspark and HDFS . Focused on data quality improvement and trend insights .
+# About the Project
+This project focuses on analyzing and cleaning a massive E-Commerce dataset containing over 287 million records.
+The goal is to improve data quality, remove duplicates, and extract key insights about customer behavior and product performance .
+---
+#Technologies Used
+Hadoop Hdfs 
+Apache Spark (Pyspark)
+Python 
+Vs code 
+Power shell 
+Kaggle (Data Source)
