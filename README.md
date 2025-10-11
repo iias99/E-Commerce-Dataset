@@ -5,3 +5,11 @@ The goal is to improve data quality, remove duplicates,
 and extract key insights about customer behavior and product performance .
 
 
+Technologies Used
+Hadoop Hdfs
+Apache Spark (Pyspark)
+Python 
+Vs code 
+Power shell 
+Kaggle (Data Source)
+
