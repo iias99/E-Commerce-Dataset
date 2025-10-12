@@ -26,6 +26,7 @@
 # Start HDFS and YARN
 start-all.sh
 start-yarn.sh
+```
 
 
 
