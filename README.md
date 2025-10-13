@@ -40,9 +40,9 @@ hdfs dfs -mkdir /Asrar1
 # Copy the dataset from local machine to HDFS
 hdfs dfs -CopyFromLocal /home/asrar/2019-Nov.csv /Asrar1
 ``` 
-![3](https://github.com/user-attachments/assets/be5ef47f-0c0d-4ec0-8570-c30ebefeb80c)
+![3](https://github.com/user-attachments/assets/73d06332-9e1e-462a-9c8f-b19657553cf3)
 
-![4](https://github.com/user-attachments/assets/5f126c75-8506-40fe-994a-e826e19818f0)
+![4](https://github.com/user-attachments/assets/20a275c4-93bf-428e-baf5-eefd94e79f69)
 
 ![5](https://github.com/user-attachments/assets/9c727c7b-eb40-4ea6-b651-d012c0b66104)
 
