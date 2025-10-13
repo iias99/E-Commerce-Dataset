@@ -46,4 +46,39 @@ hdfs dfs -CopyFromLocal /home/asrar/2019-Nov.csv /Asrar1
 
 ![5](https://github.com/user-attachments/assets/9c727c7b-eb40-4ea6-b651-d012c0b66104)
 
+---
+
+## Spark Optimization :
+Spark optimization settings were configured to improve performance and memory management.
+
+The configuration included:
+- Increasing **executor and driver memory** to 8 GB.
+- Setting the **number of shuffle partitions** to 100 for balanced data distribution.
+- Enabling **adaptive query execution** for automatic optimization.
+- Enabling **Kryo serialization** for faster data serialization.
+```
+from pyspark.sql import SparkSession
+# Initialize Spark session with optimized configurations
+spark=SparkSession.builder \
+     .appName("NovData") \
+     .master("local[*]") \
+     .config("spark.executor.memory","8g") \
+     .config("spark.driver.memory","8g") \
+     .config("spark.sql.shuffle.partitions","100")\
+     .config("spark.serializer","org.apache.spark.serializer.KryoSerializer") \
+     .config("spark.sql.adaptive.enabled","True") \
+     .config("spark.sql.adaptive.coalescePartitions.enabled","true") \
+     .config("spark.sql.adaptive.skewJoin.enabled","true") \
+     .getOrCreate()
+spark.sparkContext.setLogLevel("ERROR")
+```
+<img width="1184" height="399" alt="6" src="https://github.com/user-attachments/assets/81a8a255-62e1-4bfc-ab53-c7a3643ddf0a" />
+
+
+## Data Processing & Analysis
+### 1.Data Transformation
+**Separated the date and time** from the event timestamp into two independent columns (`event_date` and `event_time`) to make time-based analysis easier.
+
+from
+### 2.Data Cleaning
 
