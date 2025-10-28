@@ -198,11 +198,11 @@ df.show(10)
  ```python
   
  subquery1=( """ 
-  select brand , total_brand 
-  from ( select brand , Count(*) total_brand 
+  Select brand , total_brand 
+  from ( Select brand , Count(*) As total_brand 
          from eCommerce 
          Group By brand ) As top_brand
-         where total_brand > 10000
+         Where total_brand > 10000
          Order By total_brand DESC
 
 """ )
@@ -211,3 +211,23 @@ spark.sql(subquery1).show()
 
 
  <img width="739" height="651" alt="14" src="https://github.com/user-attachments/assets/12f5a07c-661a-46d6-911b-bc552a2014a5" />
+
+
+ ---
+
+
+- Analyzed **top product categories** by counting how many records belong to each `category_code`.  
+
+ ```python
+ subquery2=( """ 
+  Select category_code , total_category 
+  from ( select category_code , Count(*) As total_category 
+         from eCommerce 
+         Group By category_code ) As top_category
+         Order By total_category DESC
+
+""" )
+spark.sql(subquery2).show()
+ ```
+
+<img width="770" height="608" alt="15" src="https://github.com/user-attachments/assets/d1e8c549-40d5-4c83-a058-a3aea70dc607" />
