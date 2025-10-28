@@ -77,7 +77,15 @@ spark.sparkContext.setLogLevel("ERROR")
 
 ## Data Processing & Analysis
 ### 1.Data Transformation
-**Separated the date and time** from the event timestamp into two independent columns (`event_date` and `event_time`) to make time-based analysis easier.
+-Extracted **date** and **time** from the original timestamp column using PySpark SQL functions.
+-Created to separate column :
+ -`event_date` : containing only the date (format: YYY-MM-DD)
+ -`event_timen`: containing only the time (format: HH:mm:ss)
+Droped the original `event_time` column after transformation to simplify the structure.
+
+<img width="1220" height="503" alt="7" src="https://github.com/user-attachments/assets/9fa892e7-3773-4f56-aa6f-a10ac81b2df0" />
+
+**Separated the date and time** from the event timestamp into two independent columns (`event_date` and `event_timen`) to make time-based analysis easier.
 
 from
 ### 2.Data Cleaning
