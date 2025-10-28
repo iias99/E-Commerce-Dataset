@@ -166,11 +166,27 @@ df.show(10)
    ```python
   df.createOrReplaceTempView("eCommerce")
    spark.sql( """
-   select user_session, SUM(price) as total_price
-   from eCommerce
-   group by user_session
-   order by  total_price DESC """ ).show()
-
+   Select user_session, SUM(price) as total_price
+   From eCommerce
+   Group By user_session
+   Order By  total_price DESC """ ).show()
 
   ```
 
+<img width="715" height="608" alt="12" src="https://github.com/user-attachments/assets/8e81c071-7366-4747-8fc3-d8d7c7aa38cc" /> 
+---
+- Filtered data to show products below a certain price threshold (`price <= 20000`).
+
+  
+   ```python
+  spark.sql( """
+  Select user_id, brand, price
+   From eCommerce
+   Where price => 20000
+   Order By price DESC
+   """ ).show()
+
+
+     ```
+
+<img width="707" height="569" alt="13" src="https://github.com/user-attachments/assets/845919aa-0b99-4090-be83-82a2b1c2ff7f" />
