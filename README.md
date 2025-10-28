@@ -93,7 +93,9 @@ spark.sparkContext.setLogLevel("ERROR")
 
 ### 2.Data Cleaning
 - Filled missing values (`NULL`) in `category_code` and `brand` columns with default value `0` to prevent null-related issues.
+  
 - Trimmed long IDs in the `category_id` column to display only the first four digits for better readability using the `substring()` function.
+  
 - Converted the `price` column from string to integer type for consistent numerical analysis.
 
 <img width="1164" height="590" alt="9" src="https://github.com/user-attachments/assets/700d6fd8-e070-4b7e-9710-70d09fc49fc6" />
