@@ -1,7 +1,7 @@
 # E-Commerce-Dataset
 # About the Project
  ### This project focuses on analyzing and cleaning a massive E-Commerce dataset containing over 287 million records.
-  ### The goal is to improve data quality, remove duplicates, and extract key insights about customer behavior and product performance . 
+ ### The goal is to improve data quality, remove duplicates, and extract key insights about customer behavior and product performance . 
 ---
 # Technologies Used 
 - Hadoop Hdfs & Yarn
@@ -114,12 +114,12 @@ df.show(5, truncate=False)
 
   ```python
   from pyspark.sql.functions import col, substring
-   df = df.withColumn("category_id" , substring(col("category_id")).cast("string"),1,4)) \
+   df = df.withColumn("category_id", substring(col("category_id").cast("string"), 1, 4)) \
           .fillna({"category_code": "0", "brand": "0"}) \
           .withColumn("price", col("price").cast("int"))
 
   df.show(5)
-   
+ 
     ```
 
 <img width="1164" height="590" alt="9" src="https://github.com/user-attachments/assets/700d6fd8-e070-4b7e-9710-70d09fc49fc6" />
@@ -150,7 +150,7 @@ df.show(20, truncate=False)
 
    ```python
 from pyspark.sql.functions import count
- df.groupBy("user_id") /
+ df.groupBy("user_id") \
    .agg(count("user_session").alias("sessions_count")) \
 df.show(10)
 
