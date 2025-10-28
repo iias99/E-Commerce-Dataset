@@ -87,6 +87,18 @@ spark.sparkContext.setLogLevel("ERROR")
    - `event_timen`: containing only the time (format: HH:mm:ss)
  
 - Droped the original `event_time` column after transformation to simplify the structure.
+ ```
+from pyspark.sql.functions import to_date, date_format, col
+df.withColumn("event_date" , to_date(col("event_time"))) \
+  .withColumn( " event_timen" , date_format(col("event_time"),"HH:mm:ss")) \
+  .drop("event_time")
+
+# Used a list comprehension inside select() to loop through all columns and keep the original order without overlapping.
+df.select("event_date" , " event_timen"  , * [ c for c in df.columns if c not in ("event_date" , " event_timen"0)]
+
+df.show(5, truncate=False)
+
+ ```
 
 <img width="1220" height="503" alt="7" src="https://github.com/user-attachments/assets/9fa892e7-3773-4f56-aa6f-a10ac81b2df0" />
 
@@ -99,16 +111,47 @@ spark.sparkContext.setLogLevel("ERROR")
   
 - Converted the `price` column from string to integer type for consistent numerical analysis.
 
+  ```
+  from pyspark.sql.functions import col, substring
+   df = df.withColumn("category_id" , substring(col("category_id")).cast("string"),1,4)) \
+          .fillna({"category_code": "0", "brand": "0"}) \
+          .withColumn("price", col("price").cast("int"))
+
+  df.show(5)
+   
+    ```
+
 <img width="1164" height="590" alt="9" src="https://github.com/user-attachments/assets/700d6fd8-e070-4b7e-9710-70d09fc49fc6" />
 
 ---
-### 3.Data Anlaysis 
+### 3.Data Analysis
  - Created a window partitioned by `user_id` to analyze user behavior patterns and rank each user's viewed products based on price.
+  ```
+from pyspark.sql.window import Window
+from pyspark.sql import functions as f
 
-<img width="1178" height="473" alt="10" src="https://github.com/user-attachments/assets/b5575807-1a43-4905-ab52-9148d5c7eb65" />
+# Create window specification
+windowSpec = Window.partitionBy("user_id").orderBy(f.desc("price"))
 
+# Apply row_number to rank products per user
+df = df.withColumn("row_number", f.row_number().over(windowSpec))
+
+df.show(20, truncate=False)
+
+ ```
+ -
+ <img width="1178" height="473" alt="10" src="https://github.com/user-attachments/assets/b5575807-1a43-4905-ab52-9148d5c7eb65" />
+ ---
+ 
   - Grouped the dataset by `user_id` and counted the number of `user_session` to analyze how many sessions each user had.
 
+   ```python
+from pyspark.sql.functions import count
+ df.groupBy("user_id") /
+   .agg(count("user_session").alias("sessions_count")) \
+df.show(10)
 
+
+ ```
 <img width="864" height="391" alt="11" src="https://github.com/user-attachments/assets/78ec9fbc-0a22-4080-bc3c-8b50e33823fe" />
 
