@@ -191,4 +191,23 @@ df.show(10)
 
    ```
 
-<img width="707" height="569" alt="13" src="https://github.com/user-attachments/assets/845919aa-0b99-4090-be83-82a2b1c2ff7f" />
+<img width="707" height="569" alt="13" src="https://github.com/user-attachments/assets/845919aa-0b99-4090-be83-82a2b1c2ff7f" /> 
+
+- Aggregated results to determine the **most popular brands** and **top-selling categories**
+
+ ```python
+  
+ subquery1=( """ 
+  select brand , total_brand 
+  from ( select brand , Count(*) total_brand 
+         from eCommerce 
+         Group By brand ) As top_brand
+         where total_brand > 10000
+         Order By total_brand DESC
+
+""" )
+spark.sql(subquery1).show()
+ ```
+
+
+ <img width="739" height="651" alt="14" src="https://github.com/user-attachments/assets/12f5a07c-661a-46d6-911b-bc552a2014a5" />
