@@ -10,7 +10,8 @@
 - VS Code
 - Kaggle (Data Source)
 ---
-# Progect Workflow
+
+# Project Workflow
 
 ## Project Setup
 ### Before running the project, make sure the following components are installed:
@@ -82,11 +83,11 @@ spark.sparkContext.setLogLevel("ERROR")
 ### 1.Data Transformation
  - Extracted **date** and **time** from the original timestamp column using PySpark SQL functions.
 
- - Created to separate column :
+ - Created two separate columns :
    - `event_date` : containing only the date (format: YYY-MM-DD)
    - `event_timen`: containing only the time (format: HH:mm:ss)
  
-- Droped the original `event_time` column after transformation to simplify the structure.
+- Dropped the original `event_time` column after transformation to simplify the structure.
  ```python
 from pyspark.sql.functions import to_date, date_format, col
 df.withColumn("event_date" , to_date(col("event_time"))) \
@@ -94,7 +95,7 @@ df.withColumn("event_date" , to_date(col("event_time"))) \
   .drop("event_time")
 
 # Used a list comprehension inside select() to loop through all columns and keep the original order without overlapping.
-df.select("event_date" , " event_timen"  , * [ c for c in df.columns if c not in ("event_date" , " event_timen"0)]
+df.select("event_date", "event_timen", *[c for c in df.columns if c not in ("event_date", "event_timen")])
 
 df.show(5, truncate=False)
 
@@ -184,7 +185,7 @@ df.show(10)
   spark.sql( """
   Select user_id, brand, price
    From eCommerce
-   Where price => 20000
+   Where price <= 20000
    Order By price DESC
    """ ).show()
 
