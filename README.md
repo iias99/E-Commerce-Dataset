@@ -90,6 +90,7 @@ spark.sparkContext.setLogLevel("ERROR")
 
 <img width="1220" height="503" alt="7" src="https://github.com/user-attachments/assets/9fa892e7-3773-4f56-aa6f-a10ac81b2df0" />
 
+---
 
 ### 2.Data Cleaning
 - Filled missing values (`NULL`) in `category_code` and `brand` columns with default value `0` to prevent null-related issues.
@@ -99,3 +100,15 @@ spark.sparkContext.setLogLevel("ERROR")
 - Converted the `price` column from string to integer type for consistent numerical analysis.
 
 <img width="1164" height="590" alt="9" src="https://github.com/user-attachments/assets/700d6fd8-e070-4b7e-9710-70d09fc49fc6" />
+
+---
+### 3.Data Anlaysis 
+ - Created a window partitioned by `user_id` to analyze user behavior patterns and rank each user's viewed products based on price.
+
+<img width="1178" height="473" alt="10" src="https://github.com/user-attachments/assets/b5575807-1a43-4905-ab52-9148d5c7eb65" />
+
+  - Grouped the dataset by `user_id` and counted the number of `user_session` to analyze how many sessions each user had.
+
+
+<img width="864" height="391" alt="11" src="https://github.com/user-attachments/assets/78ec9fbc-0a22-4080-bc3c-8b50e33823fe" />
+
