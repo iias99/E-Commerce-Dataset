@@ -84,7 +84,7 @@ spark.sparkContext.setLogLevel("ERROR")
  - Extracted **date** and **time** from the original timestamp column using PySpark SQL functions.
 
  - Created two separate columns :
-   - `event_date` : containing only the date (format: YYY-MM-DD)
+   - `event_date` : containing only the date (format: YYYY-MM-DD)
    - `event_timen`: containing only the time (format: HH:mm:ss)
  
 - Dropped the original `event_time` column after transformation to simplify the structure.
