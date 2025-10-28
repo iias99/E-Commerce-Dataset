@@ -157,3 +157,20 @@ df.show(10)
  ```
 <img width="864" height="391" alt="11" src="https://github.com/user-attachments/assets/78ec9fbc-0a22-4080-bc3c-8b50e33823fe" />
 
+---
+
+#### Using Spark SQL for Data Analysis
+- Created a temporary view named `eCommerce` to run SQL queries directly on the DataFrame.  
+- Calculated **total revenue per user session** using the `SUM(price)` function.
+
+   ```python
+  df.createOrReplaceTempView("eCommerce")
+   spark.sql( """
+   select user_session, SUM(price) as total_price
+   from eCommerce
+   group by user_session
+   order by  total_price DESC """ ).show()
+
+
+  ```
+
