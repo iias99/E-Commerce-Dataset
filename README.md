@@ -56,7 +56,7 @@ The configuration included:
 - Setting the **number of shuffle partitions** to 100 for balanced data distribution.
 - Enabling **adaptive query execution** for automatic optimization.
 - Enabling **Kryo serialization** for faster data serialization.
-```
+```python
 from pyspark.sql import SparkSession
 # Initialize Spark session with optimized configurations
 spark=SparkSession.builder \
@@ -87,7 +87,7 @@ spark.sparkContext.setLogLevel("ERROR")
    - `event_timen`: containing only the time (format: HH:mm:ss)
  
 - Droped the original `event_time` column after transformation to simplify the structure.
- ```
+ ```python
 from pyspark.sql.functions import to_date, date_format, col
 df.withColumn("event_date" , to_date(col("event_time"))) \
   .withColumn( " event_timen" , date_format(col("event_time"),"HH:mm:ss")) \
@@ -111,7 +111,7 @@ df.show(5, truncate=False)
   
 - Converted the `price` column from string to integer type for consistent numerical analysis.
 
-  ```
+  ```python
   from pyspark.sql.functions import col, substring
    df = df.withColumn("category_id" , substring(col("category_id")).cast("string"),1,4)) \
           .fillna({"category_code": "0", "brand": "0"}) \
@@ -126,7 +126,9 @@ df.show(5, truncate=False)
 ---
 ### 3.Data Analysis
  - Created a window partitioned by `user_id` to analyze user behavior patterns and rank each user's viewed products based on price.
-  ```
+  
+  
+ ```python
 from pyspark.sql.window import Window
 from pyspark.sql import functions as f
 
