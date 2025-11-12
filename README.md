@@ -237,3 +237,18 @@ spark.sql(subquery2).show()
  ```
 
 <img width="770" height="608" alt="15" src="https://github.com/user-attachments/assets/d1e8c549-40d5-4c83-a058-a3aea70dc607" />
+
+
+---
+## Visualizations
+
+This dashboard provides a visual analysis of e-commerce data.
+
+- Matrix: Displays each brand along with its total price sum.  
+- Slicer: Allows filtering by event_time to view matching values dynamically.  
+- Bar Chart (Brand): Shows the sum of price and product count per brand.  
+- Line Chart (User Sessions): Displays the number of sessions for each user (user_id by user_session).  
+- Bar Chart (User Analysis): Compares user_id by session count and total purchase amount.  
+ 
+
+<img width="1845" height="1065" alt="Dashborde" src="https://github.com/user-attachments/assets/6ccc9f23-64c9-46cb-bb47-94f9f7e5f607" />
