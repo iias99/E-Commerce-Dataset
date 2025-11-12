@@ -80,9 +80,14 @@ spark.sparkContext.setLogLevel("ERROR")
 
 
 ## Data Processing & Analysis
+## Loding Data From HDFS
+   ```python
+      df=spark.csv.read("hdfs://localhost:9000//Asrar/2019-Nov.csv",header=True,inferSchema= True)
+df.printSchema()
+df.show() 
+   ```
 ### 1.Data Transformation
  - Extracted **date** and **time** from the original timestamp column using PySpark SQL functions.
-
  - Created two separate columns :
    - `event_date` : containing only the date (format: YYYY-MM-DD)
    - `event_timen`: containing only the time (format: HH:mm:ss)
